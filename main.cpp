@@ -6,6 +6,10 @@
 
 using namespace std;
 
+int carrerasGanadasCarro1 = 0;
+int carrerasGanadasCarro2 = 0;
+int carrerasGanadasCarro3 = 0;
+
 void ocultarCursor() // Funcion para ocultar el cursor
 {
     HANDLE consoleHandle = GetStdHandle(STD_OUTPUT_HANDLE);
@@ -189,6 +193,8 @@ void creditos()
 {
     system("cls");
 
+    color(7); // Cambiar el color de la letra a blanco
+
     cout << "-------------------";
     cout << "CREDITOS";
     cout << "-------------------" << endl;
@@ -303,33 +309,36 @@ void carrera(int numeroCarrera) // Funcion para simular la carrera
         {
             gotoxy(44, 22);
             cout << "Gana el carro 1!";
+            carrerasGanadasCarro1++; // Incrementar el contador de carreras ganadas para el carro 1
             break;
         }
         else if (x2 <= 10 && y2 <= 6)
         {
             gotoxy(44, 22);
             cout << "Gana el carro 2!";
+            carrerasGanadasCarro2++; // Incrementar el contador de carreras ganadas para el carro 2
             break;
         }
         else if (x3 <= 10 && y3 <= 1)
         {
             gotoxy(44, 22);
             cout << "Gana el carro 3!";
+            carrerasGanadasCarro3++; // Incrementar el contador de carreras ganadas para el carro 3
             break;
         }
     } // Fin del while
 }
 
-void multipleCarreras()
+void multiplesCarreras()
 {
-    int numCarreras = rand() % 6 + 5; // Genera un número aleatorio entre 5 y 10
+    int numCarreras = 3; // Genera un número aleatorio entre 5 y 10
 
     for (int i = 0; i < numCarreras; ++i)
     {
         system("cls");
         gotoxy(40, 20);
         cout << "CARRERA " << (i + 1) << " DE " << numCarreras;
-        Sleep(3000); // Pausa de 3 segundos antes de iniciar la carrera
+        Sleep(2000); // Pausa de 3 segundos antes de iniciar la carrera
 
         carrera(i + 1); // Inicia la carrera y pasa el número de la carrera
 
@@ -338,8 +347,176 @@ void multipleCarreras()
         Sleep(4000); // Pausa de 4 segundos antes de la siguiente carrera
     }
 
+    system("cls");
+
+    color(7); // Cambiar el color de la letra a blanco
+
     gotoxy(40, 20);
-    cout << "Todas las carreras han terminado!";
+    cout << "Todas las carreras han terminado!" << endl;
+
+    // Mostrar los resultados
+    gotoxy(40, 22);
+    cout << "RANKING:" << endl;
+
+    // Determinar primer, segundo y tercer lugar usando if
+    if (carrerasGanadasCarro1 >= carrerasGanadasCarro2 && carrerasGanadasCarro1 >= carrerasGanadasCarro3)
+    {
+        color(3);
+        gotoxy(40, 25);
+        cout << "Primer lugar";
+        gotoxy(55, 25);
+        cout << "Carro 1";
+        Carro1(65, 23);
+        gotoxy(80, 25);
+        cout << carrerasGanadasCarro1;
+
+        if (carrerasGanadasCarro2 >= carrerasGanadasCarro3)
+        {
+            color(4);
+            gotoxy(40, 29);
+            cout << "Segundo lugar";
+            gotoxy(55, 29);
+            cout << "Carro 2";
+            Carro2(65, 27);
+            gotoxy(80, 29);
+            cout << carrerasGanadasCarro2;
+
+            color(5);
+            gotoxy(40, 33);
+            cout << "Tercer lugar";
+            gotoxy(55, 33);
+            cout << "Carro 3";
+            Carro3(65, 31);
+            gotoxy(80, 33);
+            cout << carrerasGanadasCarro3;
+        }
+        else
+        {
+            color(5);
+            gotoxy(40, 29);
+            cout << "Segundo lugar";
+            gotoxy(55, 29);
+            cout << "Carro 3";
+            Carro3(65, 27);
+            gotoxy(80, 29);
+            cout << carrerasGanadasCarro3;
+
+            color(4);
+            gotoxy(40, 33);
+            cout << "Tercer lugar";
+            gotoxy(55, 33);
+            cout << "Carro 2";
+            Carro2(65, 31);
+            gotoxy(80, 33);
+            cout << carrerasGanadasCarro2;
+        }
+    }
+    else if (carrerasGanadasCarro2 >= carrerasGanadasCarro1 && carrerasGanadasCarro2 >= carrerasGanadasCarro3)
+    {
+        color(4);
+        gotoxy(40, 25);
+        cout << "Primer lugar";
+        gotoxy(55, 25);
+        cout << "Carro 2";
+        Carro2(65, 23);
+        gotoxy(80, 25);
+        cout << carrerasGanadasCarro2;
+
+        if (carrerasGanadasCarro1 >= carrerasGanadasCarro3)
+        {
+            color(3);
+            gotoxy(40, 29);
+            cout << "Segundo lugar";
+            gotoxy(55, 29);
+            cout << "Carro 1";
+            Carro1(65, 27);
+            gotoxy(80, 29);
+            cout << carrerasGanadasCarro1;
+
+            color(5);
+            gotoxy(40, 33);
+            cout << "Tercer lugar";
+            gotoxy(55, 33);
+            cout << "Carro 3";
+            Carro3(65, 31);
+            gotoxy(80, 33);
+            cout << carrerasGanadasCarro3;
+        }
+        else
+        {
+            color(5);
+            gotoxy(40, 29);
+            cout << "Segundo lugar";
+            gotoxy(55, 29);
+            cout << "Carro 3";
+            Carro3(65, 27);
+            gotoxy(80, 29);
+            cout << carrerasGanadasCarro3;
+
+            color(3);
+            gotoxy(40, 33);
+            cout << "Tercer lugar";
+            gotoxy(55, 33);
+            cout << "Carro 1";
+            Carro1(65, 31);
+            gotoxy(80, 33);
+            cout << carrerasGanadasCarro1;
+        }
+    }
+    else
+    {
+        color(5);
+        gotoxy(40, 25);
+        cout << "Primer lugar";
+        gotoxy(55, 25);
+        cout << "Carro 3";
+        Carro3(65, 23);
+        gotoxy(80, 25);
+        cout << carrerasGanadasCarro3;
+
+        if (carrerasGanadasCarro1 >= carrerasGanadasCarro2)
+        {
+            color(3);
+            gotoxy(40, 29);
+            cout << "Segundo lugar";
+            gotoxy(55, 29);
+            cout << "Carro 1";
+            Carro1(65, 27);
+            gotoxy(80, 29);
+            cout << carrerasGanadasCarro1;
+
+            color(4);
+            gotoxy(40, 33);
+            cout << "Tercer lugar";
+            gotoxy(55, 33);
+            cout << "Carro 2";
+            Carro2(65, 31);
+            gotoxy(80, 33);
+            cout << carrerasGanadasCarro2;
+        }
+        else
+        {
+            color(4);
+            gotoxy(40, 29);
+            cout << "Segundo lugar";
+            gotoxy(55, 29);
+            cout << "Carro 2";
+            Carro2(65, 27);
+            gotoxy(80, 29);
+            cout << carrerasGanadasCarro2;
+
+            color(3);
+            gotoxy(40, 33);
+            cout << "Tercer lugar";
+            gotoxy(55, 33);
+            cout << "Carro 1";
+            Carro1(65, 31);
+            gotoxy(80, 33);
+            cout << carrerasGanadasCarro1;
+        }
+    }
+
+    Sleep(5000); // Pausa antes de terminar
 }
 
 int main()
@@ -352,6 +529,7 @@ int main()
     {
         system("cls");
 
+        color(7); // Cambiar el color de la letra a blanco
         gotoxy(40, 17);
         cout << "--------------------------";
         gotoxy(40, 18);
@@ -370,7 +548,7 @@ int main()
         switch (tecla)
         {
         case '1':
-            multipleCarreras(); // Inicia múltiples carreras
+            multiplesCarreras(); // Inicia múltiples carreras
             break;
         case '2':
             creditos(); // Muestra los créditos
