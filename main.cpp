@@ -205,6 +205,19 @@ void salir()
     cout << "Gracias por jugar!" << endl;
 }
 
+void cuentaRegresiva()
+{
+    for (int i = 3; i > 0; --i)
+    {
+        gotoxy(40, 20);
+        cout << "LA CARRERA COMIENZA EN: " << i;
+        Sleep(1000); // Pausa de 1 segundo
+    }
+
+    gotoxy(40, 20);
+    cout << "                         "; // Borrar el mensaje de cuenta regresiva
+}
+
 void carrera()
 {
     system("cls");
@@ -221,35 +234,53 @@ void carrera()
     Carro2(x2, y2);
     Carro3(x3, y3);
 
+    cuentaRegresiva(); // Llamada a la función de cuenta regresiva
+
     while (true)
     {
         borrarCarro(x1, y1);
         borrarCarro(x2, y2);
         borrarCarro(x3, y3);
 
+        int avance1 = rand() % 3 + 1; // Genera un número aleatorio entre 1 y 3
+        int avance2 = rand() % 3 + 1; // Genera un número aleatorio entre 1 y 3
+        int avance3 = rand() % 3 + 1; // Genera un número aleatorio entre 1 y 3
+
         // Movimiento del carro 1
         if (x1 < 80 && y1 == 26)
-            x1++;
-        else if (x1 == 80 && y1 > 11)
-            y1--;
-        else if (y1 == 11 && x1 > 0)
-            x1--;
+            x1 += avance1;
+        else if (x1 >= 80 && y1 > 11)
+            y1 -= avance1;
+        else if (y1 <= 11 && x1 > 0)
+            x1 -= avance1;
+
+        // Asegurarse de que el carro 1 no salga de los límites
+        if (x1 > 80) x1 = 80;
+        if (y1 < 11) y1 = 11;
 
         // Movimiento del carro 2
         if (x2 < 92 && y2 == 31)
-            x2++;
-        else if (x2 == 92 && y2 > 6)
-            y2--;
-        else if (y2 == 6 && x2 > 0)
-            x2--;
+            x2 += avance2;
+        else if (x2 >= 92 && y2 > 6)
+            y2 -= avance2;
+        else if (y2 <= 6 && x2 > 0)
+            x2 -= avance2;
+
+        // Asegurarse de que el carro 2 no salga de los límites
+        if (x2 > 92) x2 = 92;
+        if (y2 < 6) y2 = 6;
 
         // Movimiento del carro 3
         if (x3 < 104 && y3 == 36)
-            x3++;
-        else if (x3 == 104 && y3 > 1)
-            y3--;
-        else if (y3 == 1 && x3 > 0)
-            x3--;
+            x3 += avance3;
+        else if (x3 >= 104 && y3 > 1)
+            y3 -= avance3;
+        else if (y3 <= 1 && x3 > 0)
+            x3 -= avance3;
+
+        // Asegurarse de que el carro 3 no salga de los límites
+        if (x3 > 104) x3 = 104;
+        if (y3 < 1) y3 = 1;
 
         Carro1(x1, y1);
         Carro2(x2, y2);
@@ -258,28 +289,28 @@ void carrera()
         Sleep(100);
 
         // Condición de victoria
-        if ((x1 == 10 && y1 == 11) || (x2 == 10 && y2 == 6) || (x3 == 10 && y3 == 1))
+        if ((x1 <= 10 && y1 <= 11) || (x2 <= 10 && y2 <= 6) || (x3 <= 10 && y3 <= 1))
             break;
     } // Fin del while
 
     color(7); // Cambiar el color de la letra a blanco
 
-    if (x1 == 10 && y1 == 11 && x2 == 10 && y2 == 6 && x3 == 10 && y3 == 1)
+    if (x1 <= 10 && y1 <= 11 && x2 <= 10 && y2 <= 6 && x3 <= 10 && y3 <= 1)
     {
         gotoxy(40, 20);
         cout << "Empate!";
     }
-    else if (x1 == 10 && y1 == 11)
+    else if (x1 <= 10 && y1 <= 11)
     {
         gotoxy(40, 20);
         cout << "Gana el carro 1!";
     }
-    else if (x2 == 10 && y2 == 6)
+    else if (x2 <= 10 && y2 <= 6)
     {
         gotoxy(40, 20);
         cout << "Gana el carro 2!";
     }
-    else if (x3 == 10 && y3 == 1)
+    else if (x3 <= 10 && y3 <= 1)
     {
         gotoxy(40, 20);
         cout << "Gana el carro 3!";
