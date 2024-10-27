@@ -246,8 +246,8 @@ void carrera()
         borrarCarro(x3, y3);
 
         int avance1 = rand() % 3 + 1; // Genera un número aleatorio entre 1 y 3
-        int avance2 = rand() % 3 + 1; // Genera un número aleatorio entre 1 y 3
-        int avance3 = rand() % 3 + 1; // Genera un número aleatorio entre 1 y 3
+        int avance2 = rand() % 4 + 1; // Genera un número aleatorio entre 1 y 3
+        int avance3 = rand() % 5 + 1; // Genera un número aleatorio entre 1 y 3
 
         // Movimiento del carro 1
         if (x1 < 80 && y1 == 26)
@@ -289,6 +289,8 @@ void carrera()
         Carro2(x2, y2);
         Carro3(x3, y3);
 
+        color(7); // Cambiar el color de la letra a blanco
+
         // Calcular y mostrar el tiempo transcurrido
         time_t currentTime = time(0);
         int elapsedTime = difftime(currentTime, startTime);
@@ -297,33 +299,28 @@ void carrera()
 
         Sleep(100);
 
+        color(7); // Cambiar el color de la letra a blanco
+
         // Condición de victoria
-        if ((x1 <= 10 && y1 <= 11) || (x2 <= 10 && y2 <= 6) || (x3 <= 10 && y3 <= 1))
+        if (x1 <= 10 && y1 <= 11)
+        {
+            gotoxy(40, 20);
+            cout << "Gana el carro 1!";
             break;
+        }
+        else if (x2 <= 10 && y2 <= 6)
+        {
+            gotoxy(40, 20);
+            cout << "Gana el carro 2!";
+            break;
+        }
+        else if (x3 <= 10 && y3 <= 1)
+        {
+            gotoxy(40, 20);
+            cout << "Gana el carro 3!";
+            break;
+        }
     } // Fin del while
-
-    color(7); // Cambiar el color de la letra a blanco
-
-    if (x1 <= 10 && y1 <= 11 && x2 <= 10 && y2 <= 6 && x3 <= 10 && y3 <= 1)
-    {
-        gotoxy(40, 20);
-        cout << "Empate!";
-    }
-    else if (x1 <= 10 && y1 <= 11)
-    {
-        gotoxy(40, 20);
-        cout << "Gana el carro 1!";
-    }
-    else if (x2 <= 10 && y2 <= 6)
-    {
-        gotoxy(40, 20);
-        cout << "Gana el carro 2!";
-    }
-    else if (x3 <= 10 && y3 <= 1)
-    {
-        gotoxy(40, 20);
-        cout << "Gana el carro 3!";
-    }
 
     esperarTecla();
 }
