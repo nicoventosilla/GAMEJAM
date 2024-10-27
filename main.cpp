@@ -34,7 +34,7 @@ void color(int color) // Funcion para cambiar el color de la letra
     SetConsoleTextAttribute(consoleHandle, color); // Cambiar el color de la letra
 }
 
-void Carro1(int x, int y) // Funcion para dibujar el carro 1
+void MIKE(int x, int y) // Funcion para dibujar el carro MIKE
 {
     color(3);
     gotoxy(x, y);
@@ -85,7 +85,7 @@ void borrarCarro(int x, int y) // Funcion para borrar un carro
     cout << "          ";
 }
 
-void pistaInferior()
+void pistaInferior() // Funcion para dibujar la pista inferior
 {
     gotoxy(0, 30);
     cout << "          ---------------------------------------------------------------------------------"; // 81 guiones
@@ -114,7 +114,7 @@ void pistaInferior()
     // 105 guiones
 }
 
-void pistaSuperior()
+void pistaSuperior() // Funcion para dibujar la pista superior
 {
     gotoxy(0, 0);
     cout <<
@@ -143,7 +143,7 @@ void pistaSuperior()
     cout << "          ---------------------------------------------------------------------------------"; // 81 guiones
 }
 
-void pistaDerecha()
+void pistaDerecha() // Funcion para dibujar la pista derecha
 {
     for (int i = 29; i > 10; i--)
     {
@@ -164,7 +164,7 @@ void pistaDerecha()
     }
 }
 
-void pistas()
+void pistas() // Funcion para dibujar las pistas
 {
     pistaSuperior();
     pistaInferior();
@@ -189,9 +189,9 @@ void esperarTecla() // Funcion para esperar a que se presione una tecla
     }
 }
 
-void creditos()
+void creditos() // Funcion para mostrar los creditos
 {
-    system("cls");
+    system("cls"); // Limpiar la pantalla
 
     color(7); // Cambiar el color de la letra a blanco
 
@@ -200,14 +200,20 @@ void creditos()
     cout << "-------------------" << endl;
     cout << "\"Aqui van los creditos\"" << endl;
 
-    esperarTecla();
+    esperarTecla(); // Esperar a que se presione una tecla
 }
 
 void salir()
 {
     system("cls");
 
+    color(7); // Cambiar el color de la letra a blanco
+
     cout << "GRACIAS POR JUGAR!" << endl;
+
+    Sleep(2000); // Esperar 2 segundos antes de salir
+
+    exit(0);
 }
 
 void cuentaRegresiva(int numeroCarrera)
@@ -216,7 +222,7 @@ void cuentaRegresiva(int numeroCarrera)
     for (int i = 3; i > 0; --i)
     {
         gotoxy(40, 20);
-        cout << "LA CARRERA " << numeroCarrera << " COMIENZA EN: " << i;
+        cout << "LA CARRERA " << numeroCarrera << " COMIENZA EN: " << i; // Mostrar la cuenta regresiva
         Sleep(1000); // Pausa de 1 segundo
     }
 
@@ -226,15 +232,16 @@ void cuentaRegresiva(int numeroCarrera)
 
 void carrera(int numeroCarrera) // Funcion para simular la carrera
 {
-    system("cls");
+    system("cls"); // Limpiar la pantalla
 
-    pistas();
+    pistas(); // Dibujar las pistas
 
+    // Coordenadas iniciales de los carros
     int x1 = 10, y1 = 26;
     int x2 = 10, y2 = 31;
     int x3 = 10, y3 = 36;
 
-    Carro1(x1, y1);
+    MIKE(x1, y1);
     Carro2(x2, y2);
     Carro3(x3, y3);
 
@@ -244,9 +251,9 @@ void carrera(int numeroCarrera) // Funcion para simular la carrera
 
     while (true)
     {
-        borrarCarro(x1, y1);
-        borrarCarro(x2, y2);
-        borrarCarro(x3, y3);
+        borrarCarro(x1, y1); // Borrar el carro 1
+        borrarCarro(x2, y2); // Borrar el carro 2
+        borrarCarro(x3, y3); // Borrar el carro 3
 
         int avance1 = rand() % 3 + 1; // Genera un número aleatorio entre 1 y 3
         int avance2 = rand() % 4 + 1; // Genera un número aleatorio entre 1 y 4
@@ -288,7 +295,7 @@ void carrera(int numeroCarrera) // Funcion para simular la carrera
         if (x3 > 104) x3 = 104;
         if (y3 < 1) y3 = 1;
 
-        Carro1(x1, y1);
+        MIKE(x1, y1);
         Carro2(x2, y2);
         Carro3(x3, y3);
 
@@ -329,7 +336,7 @@ void carrera(int numeroCarrera) // Funcion para simular la carrera
     } // Fin del while
 }
 
-void multiplesCarreras()
+void multiplesCarreras() // Funcion para simular múltiples carreras
 {
     int numCarreras = 3; // Genera un número aleatorio entre 5 y 10
 
@@ -337,8 +344,8 @@ void multiplesCarreras()
     {
         system("cls");
         gotoxy(40, 20);
-        cout << "CARRERA " << (i + 1) << " DE " << numCarreras;
-        Sleep(2000); // Pausa de 3 segundos antes de iniciar la carrera
+        cout << "CARRERA " << (i + 1) << " DE " << numCarreras; // Mostrar el número de la carrera
+        Sleep(2000); // Pausa de 2 segundos antes de iniciar la carrera
 
         carrera(i + 1); // Inicia la carrera y pasa el número de la carrera
 
@@ -358,7 +365,7 @@ void multiplesCarreras()
     gotoxy(40, 22);
     cout << "RANKING:" << endl;
 
-    // Determinar primer, segundo y tercer lugar usando if
+    // Determinar primer, segundo y tercer lugar
     if (carrerasGanadasCarro1 >= carrerasGanadasCarro2 && carrerasGanadasCarro1 >= carrerasGanadasCarro3)
     {
         color(3);
@@ -366,7 +373,7 @@ void multiplesCarreras()
         cout << "Primer lugar";
         gotoxy(55, 25);
         cout << "Carro 1";
-        Carro1(65, 23);
+        MIKE(65, 23);
         gotoxy(80, 25);
         cout << carrerasGanadasCarro1;
 
@@ -429,7 +436,7 @@ void multiplesCarreras()
             cout << "Segundo lugar";
             gotoxy(55, 29);
             cout << "Carro 1";
-            Carro1(65, 27);
+            MIKE(65, 27);
             gotoxy(80, 29);
             cout << carrerasGanadasCarro1;
 
@@ -458,7 +465,7 @@ void multiplesCarreras()
             cout << "Tercer lugar";
             gotoxy(55, 33);
             cout << "Carro 1";
-            Carro1(65, 31);
+            MIKE(65, 31);
             gotoxy(80, 33);
             cout << carrerasGanadasCarro1;
         }
@@ -481,7 +488,7 @@ void multiplesCarreras()
             cout << "Segundo lugar";
             gotoxy(55, 29);
             cout << "Carro 1";
-            Carro1(65, 27);
+            MIKE(65, 27);
             gotoxy(80, 29);
             cout << carrerasGanadasCarro1;
 
@@ -510,20 +517,22 @@ void multiplesCarreras()
             cout << "Tercer lugar";
             gotoxy(55, 33);
             cout << "Carro 1";
-            Carro1(65, 31);
+            MIKE(65, 31);
             gotoxy(80, 33);
             cout << carrerasGanadasCarro1;
         }
     }
 
-    Sleep(5000); // Pausa antes de terminar
+    Sleep(7000); // Pausa de 7 segundos anter de terminar el programa
+
+    salir(); // Salir del programa
 }
 
 int main()
 {
-    srand(time(0));
+    srand(time(0)); // Inicializar el generador de números aleatorios
 
-    ocultarCursor();
+    ocultarCursor(); // Ocultar el cursor
 
     while (true)
     {
