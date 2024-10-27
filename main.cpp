@@ -40,7 +40,7 @@ void Carro1(int x, int y) // Funcion para dibujar un carro
     gotoxy(x, y + 2);
     cout << "(   _    _)";
     gotoxy(x, y + 3);
-    cout << "=`(_)--(_)";
+    cout << " `(_)--(_)";
 }
 
 void Carro2(int x, int y) // Funcion para dibujar un carro
@@ -190,7 +190,7 @@ void creditos()
     system("cls");
 
     cout << "-------------------";
-    cout << "Creditos";
+    cout << "CREDITOS";
     cout << "-------------------" << endl;
     cout << "\"Aqui van los creditos\"" << endl;
 
@@ -202,30 +202,28 @@ void salir()
 {
     system("cls");
 
-    cout << "Gracias por jugar!" << endl;
+    cout << "GRACIAS POR JUGAR!" << endl;
 }
 
-void cuentaRegresiva()
+void cuentaRegresiva(int numeroCarrera)
 {
     color(7); // Cambiar el color de la letra a blanco
     for (int i = 3; i > 0; --i)
     {
         gotoxy(40, 20);
-        cout << "LA CARRERA COMIENZA EN: " << i;
+        cout << "LA CARRERA " << numeroCarrera << " COMIENZA EN: " << i;
         Sleep(1000); // Pausa de 1 segundo
     }
 
     gotoxy(40, 20);
-    cout << "                         "; // Borrar el mensaje de cuenta regresiva
+    cout << "                           "; // Borrar el mensaje de cuenta regresiva
 }
 
-void carrera()
+void carrera(int numeroCarrera)
 {
     system("cls");
 
     pistas();
-
-    srand(time(0));
 
     int x1 = 10, y1 = 26;
     int x2 = 10, y2 = 31;
@@ -235,9 +233,9 @@ void carrera()
     Carro2(x2, y2);
     Carro3(x3, y3);
 
-    cuentaRegresiva(); // Llamada a la función de cuenta regresiva
+    cuentaRegresiva(numeroCarrera); // Llamada a la función de cuenta regresiva
 
-    time_t startTime = time(0); // Guardar el tiempo de inicio
+    time_t tiempoInicio = time(0); // Guardar el tiempo de inicio
 
     while (true)
     {
@@ -246,8 +244,8 @@ void carrera()
         borrarCarro(x3, y3);
 
         int avance1 = rand() % 3 + 1; // Genera un número aleatorio entre 1 y 3
-        int avance2 = rand() % 4 + 1; // Genera un número aleatorio entre 1 y 3
-        int avance3 = rand() % 5 + 1; // Genera un número aleatorio entre 1 y 3
+        int avance2 = rand() % 4 + 1; // Genera un número aleatorio entre 1 y 4
+        int avance3 = rand() % 5 + 1; // Genera un número aleatorio entre 1 y 5
 
         // Movimiento del carro 1
         if (x1 < 80 && y1 == 26)
@@ -258,8 +256,8 @@ void carrera()
             x1 -= avance1;
 
         // Asegurarse de que el carro 1 no salga de los límites
-        if (x1 > 80) x1 = 80;
-        if (y1 < 11) y1 = 11;
+        if (x1 > 80) x1 = 80; // 80 es el límite derecho
+        if (y1 < 11) y1 = 11; // 11 es el límite superior
 
         // Movimiento del carro 2
         if (x2 < 92 && y2 == 31)
@@ -292,10 +290,10 @@ void carrera()
         color(7); // Cambiar el color de la letra a blanco
 
         // Calcular y mostrar el tiempo transcurrido
-        time_t currentTime = time(0);
-        int elapsedTime = difftime(currentTime, startTime);
+        time_t tiempoActual = time(0); // Obtener el tiempo actual
+        int tiempoTranscurrido = difftime(tiempoActual, tiempoInicio); // Calcular el tiempo transcurrido
         gotoxy(0, 42);
-        cout << "Tiempo transcurrido: " << elapsedTime << " segundos";
+        cout << "Tiempo transcurrido: " << tiempoTranscurrido << " segundos";
 
         Sleep(100);
 
@@ -304,46 +302,69 @@ void carrera()
         // Condición de victoria
         if (x1 <= 10 && y1 <= 11)
         {
-            gotoxy(40, 20);
+            gotoxy(44, 22);
             cout << "Gana el carro 1!";
             break;
         }
         else if (x2 <= 10 && y2 <= 6)
         {
-            gotoxy(40, 20);
+            gotoxy(44, 22);
             cout << "Gana el carro 2!";
             break;
         }
         else if (x3 <= 10 && y3 <= 1)
         {
-            gotoxy(40, 20);
+            gotoxy(44, 22);
             cout << "Gana el carro 3!";
             break;
         }
     } // Fin del while
+}
 
+void multipleCarreras()
+{
+    int numCarreras = rand() % 6 + 5; // Genera un número aleatorio entre 5 y 10
+
+    for (int i = 0; i < numCarreras; ++i)
+    {
+        system("cls");
+        gotoxy(40, 20);
+        cout << "CARRERA " << (i + 1) << " DE " << numCarreras;
+        Sleep(3000); // Pausa de 4 segundos antes de iniciar la carrera
+
+        carrera(i + 1); // Inicia la carrera y pasa el número de la carrera
+
+        gotoxy(40, 19);
+        cout << "Ganador de la carrera " << (i + 1) << ":";
+        Sleep(4000); // Pausa de 4 segundos antes de la siguiente carrera
+    }
+
+    gotoxy(40, 20);
+    cout << "Todas las carreras han terminado!";
     esperarTecla();
 }
 
 int main()
 {
+    srand(time(0));
+
     ocultarCursor();
 
     while (true)
     {
         system("cls");
 
-        gotoxy(10, 10);
+        gotoxy(40, 17);
         cout << "--------------------------";
-        gotoxy(10, 11);
+        gotoxy(40, 18);
         cout << "SIMULADOR DE CARRERAS CCPL";
-        gotoxy(10, 12);
+        gotoxy(40, 19);
         cout << "--------------------------" << endl;
-        gotoxy(10, 13);
+        gotoxy(40, 20);
         cout << "[1] Jugar" << endl;
-        gotoxy(10, 14);
+        gotoxy(40, 21);
         cout << "[2] Creditos" << endl;
-        gotoxy(10, 15);
+        gotoxy(40, 22);
         cout << "[3] Salir" << endl;
 
         char tecla = _getch(); // Espera a que se presione una tecla
@@ -351,14 +372,14 @@ int main()
         switch (tecla)
         {
         case '1':
-            carrera(); // Inicia la carrera
+            multipleCarreras(); // Inicia múltiples carreras
             break;
         case '2':
-            creditos(); // Muestra los creditos
+            creditos(); // Muestra los créditos
             break;
         case '3':
             salir();
-            return 0; /// Termina el programa
+            return 0; // Termina el programa
         }
     }
 
