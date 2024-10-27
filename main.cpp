@@ -207,6 +207,7 @@ void salir()
 
 void cuentaRegresiva()
 {
+    color(7); // Cambiar el color de la letra a blanco
     for (int i = 3; i > 0; --i)
     {
         gotoxy(40, 20);
@@ -235,6 +236,8 @@ void carrera()
     Carro3(x3, y3);
 
     cuentaRegresiva(); // Llamada a la función de cuenta regresiva
+
+    time_t startTime = time(0); // Guardar el tiempo de inicio
 
     while (true)
     {
@@ -285,6 +288,12 @@ void carrera()
         Carro1(x1, y1);
         Carro2(x2, y2);
         Carro3(x3, y3);
+
+        // Calcular y mostrar el tiempo transcurrido
+        time_t currentTime = time(0);
+        int elapsedTime = difftime(currentTime, startTime);
+        gotoxy(0, 42);
+        cout << "Tiempo transcurrido: " << elapsedTime << " segundos";
 
         Sleep(100);
 
