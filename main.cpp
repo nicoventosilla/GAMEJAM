@@ -30,7 +30,7 @@ void color(int color) // Funcion para cambiar el color de la letra
     SetConsoleTextAttribute(consoleHandle, color); // Cambiar el color de la letra
 }
 
-void Carro1(int x, int y) // Funcion para dibujar un carro
+void Carro1(int x, int y) // Funcion para dibujar el carro 1
 {
     color(3);
     gotoxy(x, y);
@@ -43,7 +43,7 @@ void Carro1(int x, int y) // Funcion para dibujar un carro
     cout << " `(_)--(_)";
 }
 
-void Carro2(int x, int y) // Funcion para dibujar un carro
+void Carro2(int x, int y) // Funcion para dibujar el carro 2
 {
     color(4);
     gotoxy(x, y);
@@ -56,7 +56,7 @@ void Carro2(int x, int y) // Funcion para dibujar un carro
     cout << "  O    O";
 }
 
-void Carro3(int x, int y) // Funcion para dibujar un carro
+void Carro3(int x, int y) // Funcion para dibujar el carro 3
 {
     color(5);
     gotoxy(x, y);
@@ -197,7 +197,6 @@ void creditos()
     esperarTecla();
 }
 
-
 void salir()
 {
     system("cls");
@@ -219,7 +218,7 @@ void cuentaRegresiva(int numeroCarrera)
     cout << "                           "; // Borrar el mensaje de cuenta regresiva
 }
 
-void carrera(int numeroCarrera)
+void carrera(int numeroCarrera) // Funcion para simular la carrera
 {
     system("cls");
 
@@ -233,7 +232,7 @@ void carrera(int numeroCarrera)
     Carro2(x2, y2);
     Carro3(x3, y3);
 
-    cuentaRegresiva(numeroCarrera); // Llamada a la función de cuenta regresiva
+    cuentaRegresiva(numeroCarrera); // Mostrar la cuenta regresiva
 
     time_t tiempoInicio = time(0); // Guardar el tiempo de inicio
 
@@ -330,7 +329,7 @@ void multipleCarreras()
         system("cls");
         gotoxy(40, 20);
         cout << "CARRERA " << (i + 1) << " DE " << numCarreras;
-        Sleep(3000); // Pausa de 4 segundos antes de iniciar la carrera
+        Sleep(3000); // Pausa de 3 segundos antes de iniciar la carrera
 
         carrera(i + 1); // Inicia la carrera y pasa el número de la carrera
 
@@ -341,7 +340,6 @@ void multipleCarreras()
 
     gotoxy(40, 20);
     cout << "Todas las carreras han terminado!";
-    esperarTecla();
 }
 
 int main()
