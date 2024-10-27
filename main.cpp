@@ -1,10 +1,10 @@
-#include <iostream>
-#include <windows.h>
-#include <conio.h>
-#include <cstdlib>
-#include <ctime>
+#include <iostream> // Para usar cout y cin
+#include <windows.h> // Para usar las funciones de la consola
+#include <conio.h> // Para usar _getch() y _kbhit()
+#include <cstdlib> // Para usar srand() y rand()
+#include <ctime> // Para usar time()
 
-using namespace std;
+using namespace std; // Para no tener que escribir std::cout y std::cin
 
 int carrerasGanadasCarro1 = 0;
 int carrerasGanadasCarro2 = 0;
@@ -47,7 +47,7 @@ void MIKE(int x, int y) // Funcion para dibujar el carro MIKE
     cout << " `(_)--(_)";
 }
 
-void Carro2(int x, int y) // Funcion para dibujar el carro 2
+void MATE(int x, int y) // Funcion para dibujar el MATE
 {
     color(4);
     gotoxy(x, y);
@@ -60,7 +60,7 @@ void Carro2(int x, int y) // Funcion para dibujar el carro 2
     cout << "  O    O";
 }
 
-void Carro3(int x, int y) // Funcion para dibujar el carro 3
+void SPIRIT(int x, int y) // Funcion para dibujar el SPIRIT
 {
     color(5);
     gotoxy(x, y);
@@ -192,14 +192,31 @@ void esperarTecla() // Funcion para esperar a que se presione una tecla
 void creditos() // Funcion para mostrar los creditos
 {
     system("cls"); // Limpiar la pantalla
-
     color(7); // Cambiar el color de la letra a blanco
-
-    cout << "-------------------";
-    cout << "CREDITOS";
-    cout << "-------------------" << endl;
-    cout << "\"Aqui van los creditos\"" << endl;
-
+    cout << "-----------------------------------------------------------------------------------" << endl;
+cout << "-----------------------------------------------------------------------------------" << endl;
+cout << "  ______     ______     ______     _____     __     ______   ______     ______     " << endl;
+cout << " /\\  ___\\   /\\  == \\   /\\  ___\\   /\\  __-.  /\\ \\   /\\__  _\\ /\\  __ \\   /\\  ___\\    " << endl;
+cout << " \\ \\ \\____  \\ \\  __<   \\ \\  __\\   \\ \\ \\/\\ \\ \\ \\ \\  \\/_/\\ \\/ \\ \\ \\/\\ \\  \\ \\___  \\   " << endl;
+cout << "  \\ \\_____\\  \\ \\_\\ \\_\\  \\ \\_____\\  \\ \\____-  \\ \\_\\    \\ \\_\\  \\ \\_____\\  \\/\\_____\\  " << endl;
+cout << "   \\/_____/   \\/_/ /_/   \\/_____/   \\/____/   \\/_/     \\/_/   \\/_____/   \\/_____/  " << endl;
+cout << "                                                                                   " << endl;
+cout << "                                                                                   " << endl;
+cout << "                          UPC CAMPUS SAN MIGUEL                                    " << endl;
+cout << "                     INTRODUCCION A LOS ALGORITMOS                                 " << endl;
+cout << "                             GAME JAM 2024                                         " << endl;
+cout << "                                                                                   " << endl;
+cout << "                             PROGRAMADORES                                         " << endl;
+cout << "                       Ventosilla Chelge Nicolas                                   " << endl;
+cout << "                          Ponce Wong Jarumi                                        " << endl;
+cout << "                         Celis Salinas Alvaro                                      " << endl;
+cout << "                                                                                   " << endl;
+cout << "                               DOCENTE                                             " << endl;
+cout << "                         Rojas Sihuay Diego                                        " << endl;
+cout << "                                                                                   " << endl;
+cout << "                                                                                   " << endl;
+cout << "-----------------------------------------------------------------------------------" << endl;
+cout << "-----------------------------------------------------------------------------------" << endl;
     esperarTecla(); // Esperar a que se presione una tecla
 }
 
@@ -209,10 +226,24 @@ void salir()
 
     color(7); // Cambiar el color de la letra a blanco
 
-    cout << "GRACIAS POR JUGAR!" << endl;
-
-    Sleep(2000); // Esperar 2 segundos antes de salir
-
+    cout << "--------------------------------------------------------------------------" << endl;
+    cout << "--------------------------------------------------------------------------" << endl;
+    cout << "    ____                         _                                        " << endl;
+    cout << "   / ___|  _ __    __ _    ___  (_)   __ _   ___     _ __     ___    _ __ " << endl;
+    cout << "  | |  _  | '__|  / _` |  / __| | |  / _` | / __|   | '_ \\   / _ \\  | '__|" << endl;
+    cout << "  | |_| | | |    | (_| | | (__  | | | (_| | \\__ \\   | |_) | | (_) | | |   " << endl;
+    cout << "   \\____| |_|     \\__,_|  \\___| |_|  \\__,_| |___/   | .__/   \\___/  |_|   " << endl;
+    cout << "                                                    |_|                   " << endl;
+    cout << "                                                                          " << endl;
+    cout << "                     _                                                    " << endl;
+    cout << "                    | |  _   _    __ _    __ _   _ __                     " << endl;
+    cout << "                 _  | | | | | |  / _` |  / _` | | '__|                    " << endl;
+    cout << "                | |_| | | |_| | | (_| | | (_| | | |                       " << endl;
+    cout << "                 \\___/   \\__,_|  \\__, |  \\__,_| |_|                       " << endl;
+    cout << "                                 |___/                                    " << endl;
+    cout << "                                                                          " << endl;
+    cout << "--------------------------------------------------------------------------" << endl;
+    cout << "--------------------------------------------------------------------------" << endl;
     exit(0);
 }
 
@@ -242,8 +273,8 @@ void carrera(int numeroCarrera) // Funcion para simular la carrera
     int x3 = 10, y3 = 36;
 
     MIKE(x1, y1);
-    Carro2(x2, y2);
-    Carro3(x3, y3);
+    MATE(x2, y2);
+    SPIRIT(x3, y3);
 
     cuentaRegresiva(numeroCarrera); // Mostrar la cuenta regresiva
 
@@ -251,15 +282,15 @@ void carrera(int numeroCarrera) // Funcion para simular la carrera
 
     while (true)
     {
-        borrarCarro(x1, y1); // Borrar el carro 1
-        borrarCarro(x2, y2); // Borrar el carro 2
-        borrarCarro(x3, y3); // Borrar el carro 3
+        borrarCarro(x1, y1); // Borrar MIKE
+        borrarCarro(x2, y2); // Borrar MATE
+        borrarCarro(x3, y3); // Borrar SPIRIT
 
         int avance1 = rand() % 3 + 1; // Genera un número aleatorio entre 1 y 3
         int avance2 = rand() % 4 + 1; // Genera un número aleatorio entre 1 y 4
         int avance3 = rand() % 5 + 1; // Genera un número aleatorio entre 1 y 5
 
-        // Movimiento del carro 1
+        // Movimiento de MIKE
         if (x1 < 80 && y1 == 26)
             x1 += avance1;
         else if (x1 >= 80 && y1 > 11)
@@ -267,11 +298,11 @@ void carrera(int numeroCarrera) // Funcion para simular la carrera
         else if (y1 <= 11 && x1 > 0)
             x1 -= avance1;
 
-        // Asegurarse de que el carro 1 no salga de los límites
+        // Asegurarse de que MIKE no salga de los límites
         if (x1 > 80) x1 = 80; // 80 es el límite derecho
         if (y1 < 11) y1 = 11; // 11 es el límite superior
 
-        // Movimiento del carro 2
+        // Movimiento del MATE
         if (x2 < 92 && y2 == 31)
             x2 += avance2;
         else if (x2 >= 92 && y2 > 6)
@@ -279,11 +310,11 @@ void carrera(int numeroCarrera) // Funcion para simular la carrera
         else if (y2 <= 6 && x2 > 0)
             x2 -= avance2;
 
-        // Asegurarse de que el carro 2 no salga de los límites
+        // Asegurarse de que el MATE no salga de los límites
         if (x2 > 92) x2 = 92;
         if (y2 < 6) y2 = 6;
 
-        // Movimiento del carro 3
+        // Movimiento del SPIRIT
         if (x3 < 104 && y3 == 36)
             x3 += avance3;
         else if (x3 >= 104 && y3 > 1)
@@ -291,13 +322,13 @@ void carrera(int numeroCarrera) // Funcion para simular la carrera
         else if (y3 <= 1 && x3 > 0)
             x3 -= avance3;
 
-        // Asegurarse de que el carro 3 no salga de los límites
+        // Asegurarse de que el SPIRIT no salga de los límites
         if (x3 > 104) x3 = 104;
         if (y3 < 1) y3 = 1;
 
         MIKE(x1, y1);
-        Carro2(x2, y2);
-        Carro3(x3, y3);
+        MATE(x2, y2);
+        SPIRIT(x3, y3);
 
         color(7); // Cambiar el color de la letra a blanco
 
@@ -315,22 +346,22 @@ void carrera(int numeroCarrera) // Funcion para simular la carrera
         if (x1 <= 10 && y1 <= 11)
         {
             gotoxy(44, 22);
-            cout << "Gana el carro 1!";
-            carrerasGanadasCarro1++; // Incrementar el contador de carreras ganadas para el carro 1
+            cout << "Gana MIKE!";
+            carrerasGanadasCarro1++; // Incrementar el contador de carreras ganadas para el MIKE
             break;
         }
         else if (x2 <= 10 && y2 <= 6)
         {
             gotoxy(44, 22);
-            cout << "Gana el carro 2!";
-            carrerasGanadasCarro2++; // Incrementar el contador de carreras ganadas para el carro 2
+            cout << "Gana MATE!";
+            carrerasGanadasCarro2++; // Incrementar el contador de carreras ganadas para el MATE
             break;
         }
         else if (x3 <= 10 && y3 <= 1)
         {
             gotoxy(44, 22);
-            cout << "Gana el carro 3!";
-            carrerasGanadasCarro3++; // Incrementar el contador de carreras ganadas para el carro 3
+            cout << "Gana SPIRIT!";
+            carrerasGanadasCarro3++; // Incrementar el contador de carreras ganadas para el SPIRIT
             break;
         }
     } // Fin del while
@@ -338,7 +369,8 @@ void carrera(int numeroCarrera) // Funcion para simular la carrera
 
 void multiplesCarreras() // Funcion para simular múltiples carreras
 {
-    int numCarreras = 3; // Genera un número aleatorio entre 5 y 10
+    // Genera un número aleatorio entre 5 y 10
+    int numCarreras = rand() % 6 + 5;
 
     for (int i = 0; i < numCarreras; ++i)
     {
@@ -372,7 +404,7 @@ void multiplesCarreras() // Funcion para simular múltiples carreras
         gotoxy(40, 25);
         cout << "Primer lugar";
         gotoxy(55, 25);
-        cout << "Carro 1";
+        cout << "MIKE";
         MIKE(65, 23);
         gotoxy(80, 25);
         cout << carrerasGanadasCarro1;
@@ -383,8 +415,8 @@ void multiplesCarreras() // Funcion para simular múltiples carreras
             gotoxy(40, 29);
             cout << "Segundo lugar";
             gotoxy(55, 29);
-            cout << "Carro 2";
-            Carro2(65, 27);
+            cout << "MATE";
+            MATE(65, 27);
             gotoxy(80, 29);
             cout << carrerasGanadasCarro2;
 
@@ -392,8 +424,8 @@ void multiplesCarreras() // Funcion para simular múltiples carreras
             gotoxy(40, 33);
             cout << "Tercer lugar";
             gotoxy(55, 33);
-            cout << "Carro 3";
-            Carro3(65, 31);
+            cout << "SPIRIT";
+            SPIRIT(65, 31);
             gotoxy(80, 33);
             cout << carrerasGanadasCarro3;
         }
@@ -403,8 +435,8 @@ void multiplesCarreras() // Funcion para simular múltiples carreras
             gotoxy(40, 29);
             cout << "Segundo lugar";
             gotoxy(55, 29);
-            cout << "Carro 3";
-            Carro3(65, 27);
+            cout << "SPIRIT";
+            SPIRIT(65, 27);
             gotoxy(80, 29);
             cout << carrerasGanadasCarro3;
 
@@ -412,8 +444,8 @@ void multiplesCarreras() // Funcion para simular múltiples carreras
             gotoxy(40, 33);
             cout << "Tercer lugar";
             gotoxy(55, 33);
-            cout << "Carro 2";
-            Carro2(65, 31);
+            cout << "MATE";
+            MATE(65, 31);
             gotoxy(80, 33);
             cout << carrerasGanadasCarro2;
         }
@@ -424,8 +456,8 @@ void multiplesCarreras() // Funcion para simular múltiples carreras
         gotoxy(40, 25);
         cout << "Primer lugar";
         gotoxy(55, 25);
-        cout << "Carro 2";
-        Carro2(65, 23);
+        cout << "MATE";
+        MATE(65, 23);
         gotoxy(80, 25);
         cout << carrerasGanadasCarro2;
 
@@ -435,7 +467,7 @@ void multiplesCarreras() // Funcion para simular múltiples carreras
             gotoxy(40, 29);
             cout << "Segundo lugar";
             gotoxy(55, 29);
-            cout << "Carro 1";
+            cout << "MIKE";
             MIKE(65, 27);
             gotoxy(80, 29);
             cout << carrerasGanadasCarro1;
@@ -444,8 +476,8 @@ void multiplesCarreras() // Funcion para simular múltiples carreras
             gotoxy(40, 33);
             cout << "Tercer lugar";
             gotoxy(55, 33);
-            cout << "Carro 3";
-            Carro3(65, 31);
+            cout << "SPIRIT";
+            SPIRIT(65, 31);
             gotoxy(80, 33);
             cout << carrerasGanadasCarro3;
         }
@@ -455,8 +487,8 @@ void multiplesCarreras() // Funcion para simular múltiples carreras
             gotoxy(40, 29);
             cout << "Segundo lugar";
             gotoxy(55, 29);
-            cout << "Carro 3";
-            Carro3(65, 27);
+            cout << "SPIRIT";
+            SPIRIT(65, 27);
             gotoxy(80, 29);
             cout << carrerasGanadasCarro3;
 
@@ -464,7 +496,7 @@ void multiplesCarreras() // Funcion para simular múltiples carreras
             gotoxy(40, 33);
             cout << "Tercer lugar";
             gotoxy(55, 33);
-            cout << "Carro 1";
+            cout << "MIKE";
             MIKE(65, 31);
             gotoxy(80, 33);
             cout << carrerasGanadasCarro1;
@@ -476,8 +508,8 @@ void multiplesCarreras() // Funcion para simular múltiples carreras
         gotoxy(40, 25);
         cout << "Primer lugar";
         gotoxy(55, 25);
-        cout << "Carro 3";
-        Carro3(65, 23);
+        cout << "SPIRIT";
+        SPIRIT(65, 23);
         gotoxy(80, 25);
         cout << carrerasGanadasCarro3;
 
@@ -487,7 +519,7 @@ void multiplesCarreras() // Funcion para simular múltiples carreras
             gotoxy(40, 29);
             cout << "Segundo lugar";
             gotoxy(55, 29);
-            cout << "Carro 1";
+            cout << "MIKE";
             MIKE(65, 27);
             gotoxy(80, 29);
             cout << carrerasGanadasCarro1;
@@ -496,8 +528,8 @@ void multiplesCarreras() // Funcion para simular múltiples carreras
             gotoxy(40, 33);
             cout << "Tercer lugar";
             gotoxy(55, 33);
-            cout << "Carro 2";
-            Carro2(65, 31);
+            cout << "MATE";
+            MATE(65, 31);
             gotoxy(80, 33);
             cout << carrerasGanadasCarro2;
         }
@@ -507,8 +539,8 @@ void multiplesCarreras() // Funcion para simular múltiples carreras
             gotoxy(40, 29);
             cout << "Segundo lugar";
             gotoxy(55, 29);
-            cout << "Carro 2";
-            Carro2(65, 27);
+            cout << "MATE";
+            MATE(65, 27);
             gotoxy(80, 29);
             cout << carrerasGanadasCarro2;
 
@@ -516,7 +548,7 @@ void multiplesCarreras() // Funcion para simular múltiples carreras
             gotoxy(40, 33);
             cout << "Tercer lugar";
             gotoxy(55, 33);
-            cout << "Carro 1";
+            cout << "MIKE";
             MIKE(65, 31);
             gotoxy(80, 33);
             cout << carrerasGanadasCarro1;
@@ -539,18 +571,24 @@ int main()
         system("cls");
 
         color(7); // Cambiar el color de la letra a blanco
+        gotoxy(40, 15);
+        cout << "*******************************************";
+        gotoxy(40, 16);
+        cout << "*              MOTOR SIMULATOR            *";
         gotoxy(40, 17);
-        cout << "--------------------------";
+        cout << "*******************************************";
         gotoxy(40, 18);
-        cout << "SIMULADOR DE CARRERAS CCPL";
+        cout << "*                         _____           *";
         gotoxy(40, 19);
-        cout << "--------------------------" << endl;
+        cout << "*     1. Jugar        ___/__|__\\___      *";
         gotoxy(40, 20);
-        cout << "[1] Jugar" << endl;
+        cout << "*     2. Creditos     |  _     _    |     *";
         gotoxy(40, 21);
-        cout << "[2] Creditos" << endl;
+        cout << "*     3. Salir        -(_)-------(_)-     *";
         gotoxy(40, 22);
-        cout << "[3] Salir" << endl;
+        cout << "*                                         *";
+        gotoxy(40, 23);
+        cout << "*******************************************";
 
         char tecla = _getch(); // Espera a que se presione una tecla
 
