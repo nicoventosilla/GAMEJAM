@@ -6,6 +6,7 @@
 
 using namespace std; // Para no tener que escribir std::cout y std::cin
 
+// Variables globales
 int carrerasGanadasCarro1 = 0;
 int carrerasGanadasCarro2 = 0;
 int carrerasGanadasCarro3 = 0;
@@ -47,7 +48,7 @@ void MIKE(int x, int y) // Funcion para dibujar el carro MIKE
     cout << " `(_)--(_)";
 }
 
-void MATE(int x, int y) // Funcion para dibujar el MATE
+void MATE(int x, int y) // Funcion para dibujar el carro MATE
 {
     color(4);
     gotoxy(x, y);
@@ -178,12 +179,12 @@ void esperarTecla() // Funcion para esperar a que se presione una tecla
 
     while (true)
     {
-        if (_kbhit())
+        if (_kbhit()) // Si se presiona una tecla
         {
-            char tecla = _getch();
+            char tecla = _getch(); // Obtener la tecla presionada
             if (tecla == 27) // 27 es el codigo ASCII del ESCAPE
             {
-                break;
+                break; // Salir del bucle
             }
         }
     }
@@ -194,29 +195,29 @@ void creditos() // Funcion para mostrar los creditos
     system("cls"); // Limpiar la pantalla
     color(7); // Cambiar el color de la letra a blanco
     cout << "-----------------------------------------------------------------------------------" << endl;
-cout << "-----------------------------------------------------------------------------------" << endl;
-cout << "  ______     ______     ______     _____     __     ______   ______     ______     " << endl;
-cout << " /\\  ___\\   /\\  == \\   /\\  ___\\   /\\  __-.  /\\ \\   /\\__  _\\ /\\  __ \\   /\\  ___\\    " << endl;
-cout << " \\ \\ \\____  \\ \\  __<   \\ \\  __\\   \\ \\ \\/\\ \\ \\ \\ \\  \\/_/\\ \\/ \\ \\ \\/\\ \\  \\ \\___  \\   " << endl;
-cout << "  \\ \\_____\\  \\ \\_\\ \\_\\  \\ \\_____\\  \\ \\____-  \\ \\_\\    \\ \\_\\  \\ \\_____\\  \\/\\_____\\  " << endl;
-cout << "   \\/_____/   \\/_/ /_/   \\/_____/   \\/____/   \\/_/     \\/_/   \\/_____/   \\/_____/  " << endl;
-cout << "                                                                                   " << endl;
-cout << "                                                                                   " << endl;
-cout << "                          UPC CAMPUS SAN MIGUEL                                    " << endl;
-cout << "                     INTRODUCCION A LOS ALGORITMOS                                 " << endl;
-cout << "                             GAME JAM 2024                                         " << endl;
-cout << "                                                                                   " << endl;
-cout << "                             PROGRAMADORES                                         " << endl;
-cout << "                       Ventosilla Chelge Nicolas                                   " << endl;
-cout << "                          Ponce Wong Jarumi                                        " << endl;
-cout << "                         Celis Salinas Alvaro                                      " << endl;
-cout << "                                                                                   " << endl;
-cout << "                               DOCENTE                                             " << endl;
-cout << "                         Rojas Sihuay Diego                                        " << endl;
-cout << "                                                                                   " << endl;
-cout << "                                                                                   " << endl;
-cout << "-----------------------------------------------------------------------------------" << endl;
-cout << "-----------------------------------------------------------------------------------" << endl;
+    cout << "-----------------------------------------------------------------------------------" << endl;
+    cout << "  ______     ______     ______     _____     __     ______   ______     ______     " << endl;
+    cout << " /\\  ___\\   /\\  == \\   /\\  ___\\   /\\  __-.  /\\ \\   /\\__  _\\ /\\  __ \\   /\\  ___\\    " << endl;
+    cout << " \\ \\ \\____  \\ \\  __<   \\ \\  __\\   \\ \\ \\/\\ \\ \\ \\ \\  \\/_/\\ \\/ \\ \\ \\/\\ \\  \\ \\___  \\   " << endl;
+    cout << "  \\ \\_____\\  \\ \\_\\ \\_\\  \\ \\_____\\  \\ \\____-  \\ \\_\\    \\ \\_\\  \\ \\_____\\  \\/\\_____\\  " << endl;
+    cout << "   \\/_____/   \\/_/ /_/   \\/_____/   \\/____/   \\/_/     \\/_/   \\/_____/   \\/_____/  " << endl;
+    cout << "                                                                                   " << endl;
+    cout << "                                                                                   " << endl;
+    cout << "                          UPC CAMPUS SAN MIGUEL                                    " << endl;
+    cout << "                     INTRODUCCION A LOS ALGORITMOS                                 " << endl;
+    cout << "                             GAME JAM 2024                                         " << endl;
+    cout << "                                                                                   " << endl;
+    cout << "                             PROGRAMADORES                                         " << endl;
+    cout << "                       Ventosilla Chelge Nicolas                                   " << endl;
+    cout << "                          Ponce Wong Jarumi                                        " << endl;
+    cout << "                         Celis Salinas Alvaro                                      " << endl;
+    cout << "                                                                                   " << endl;
+    cout << "                               DOCENTE                                             " << endl;
+    cout << "                         Rojas Sihuay Diego                                        " << endl;
+    cout << "                                                                                   " << endl;
+    cout << "                                                                                   " << endl;
+    cout << "-----------------------------------------------------------------------------------" << endl;
+    cout << "-----------------------------------------------------------------------------------" << endl;
     esperarTecla(); // Esperar a que se presione una tecla
 }
 
@@ -247,7 +248,7 @@ void salir()
     exit(0);
 }
 
-void cuentaRegresiva(int numeroCarrera)
+void cuentaRegresiva(int numeroCarrera) // Funcion para mostrar la cuenta regresiva
 {
     color(7); // Cambiar el color de la letra a blanco
     for (int i = 3; i > 0; --i)
@@ -272,6 +273,7 @@ void carrera(int numeroCarrera) // Funcion para simular la carrera
     int x2 = 10, y2 = 31;
     int x3 = 10, y3 = 36;
 
+    // Dibujar los carros en sus posiciones iniciales
     MIKE(x1, y1);
     MATE(x2, y2);
     SPIRIT(x3, y3);
@@ -326,6 +328,7 @@ void carrera(int numeroCarrera) // Funcion para simular la carrera
         if (x3 > 104) x3 = 104;
         if (y3 < 1) y3 = 1;
 
+        // Dibujar los carros en sus nuevas posiciones
         MIKE(x1, y1);
         MATE(x2, y2);
         SPIRIT(x3, y3);
@@ -338,7 +341,7 @@ void carrera(int numeroCarrera) // Funcion para simular la carrera
         gotoxy(0, 42);
         cout << "Tiempo transcurrido: " << tiempoTranscurrido << " segundos";
 
-        Sleep(100);
+        Sleep(100); // Pausa de 0.1 segundos
 
         color(7); // Cambiar el color de la letra a blanco
 
@@ -369,8 +372,7 @@ void carrera(int numeroCarrera) // Funcion para simular la carrera
 
 void multiplesCarreras() // Funcion para simular múltiples carreras
 {
-    // Genera un número aleatorio entre 5 y 10
-    int numCarreras = rand() % 6 + 5;
+    int numCarreras = rand() % 6 + 5; // Genera un número aleatorio entre 5 y 10
 
     for (int i = 0; i < numCarreras; ++i)
     {
