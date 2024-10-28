@@ -582,7 +582,7 @@ int main()
         gotoxy(40, 18);
         cout << "*                         _____           *";
         gotoxy(40, 19);
-        cout << "*     1. Jugar        ___/__|__\\___      *";
+        cout << "*     1. Jugar        ___/__|__\\___       *";
         gotoxy(40, 20);
         cout << "*     2. Creditos     |  _     _    |     *";
         gotoxy(40, 21);
