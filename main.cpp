@@ -174,7 +174,7 @@ void pistas() // Funcion para dibujar las pistas
 
 void esperarTecla() // Funcion para esperar a que se presione una tecla
 {
-    gotoxy(25, 21);
+    gotoxy(0, 24);
     cout << "Presione <ESCAPE> para volver al menu principal" << endl;
 
     while (true)
